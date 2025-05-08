@@ -1,0 +1,60 @@
+{
+  "layer": "top",
+  "position": "top",
+  "modules-left": [
+    "hyprland/workspaces",
+    "keyboard-state"
+  ],
+  "modules-center": [
+    "custom/notifications",
+    "custom/media"
+  ],
+  "modules-right": [
+    "pulseaudio",
+    "bluetooth",
+    "clock"
+  ],
+  "hyprland/workspaces": {
+    "format": "{name}",
+    "on-click": "activate"
+  },
+  "custom/media": {
+    "exec": "playerctl -l | head -n1 | xargs -I{} sh -c 'playerctl -p {} metadata artist && playerctl -p {} metadata title && echo {}' | paste -sd '|' - | awk -F '|' '{ printf \"🎵 [%s] %s - %s\", $3, $1, $2 }' || echo '🎵 No media'",
+    "return-type": "text",
+    "interval": 5,
+    "tooltip": true
+  },
+  "custom/notifications": {
+    "tooltip": false,
+    "format": "",
+    "exec": "swaync-client -c | grep -q 'Notifications: true' && echo '' || echo ''",
+    "on-click": "swaync-client -C",
+    "on-click-right": "swaync-client -t",
+    "return-type": "text",
+    "interval": 2
+  },
+  "pulseaudio": {
+    "format": " {volume}%",
+    "format-muted": " Muted",
+    "scroll-step": 5,
+    "on-click": "pavucontrol"
+  },
+  "bluetooth": {
+    "format": "󰂯 {status}",
+    "format-disabled": "󰂲 Off",
+    "interval": 30
+  },
+  "keyboard-state": {
+    "numlock": true,
+    "capslock": true,
+    "format": "{layout}",
+    "layout": {
+      "hu": "HU",
+      "us": "US"
+    }
+  },
+  "clock": {
+    "format": "{:%a %b %d  %I:%M:%S %p}",
+    "tooltip-format": "{:%Y-%m-%d %H:%M:%S}"
+  }
+}
