@@ -19,16 +19,12 @@
   font-family: "JetBrainsMono Nerd Font", "Fira Code", monospace;
   font-size: 14px;
   color: @text-color;
-  border-radius: 10px;
   border: none;
   background: transparent;
 }
 
 window {
   background-color: @cc-bg;
-  border: 1px solid @border-color;
-  border-radius: 12px;
-  padding: 10px;
 }
 
 .notification-row {
@@ -69,20 +65,7 @@ window {
   background-color: @noti-close-bg-hover;
 }
 
-.slider {
-  trough {
-    background-color: @noti-bg-darker;
-    border-radius: 10px;
-  }
-  highlight {
-    background-color: @bg-selected;
-    border-radius: 10px;
-  }
-  slider {
-    background-color: @bg-selected;
-    border: 1px solid @highlight-green;
-  }
-}
+
 
 .dnd-button {
   background-color: @noti-bg-darker;

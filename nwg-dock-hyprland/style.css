@@ -2,7 +2,7 @@ window {
 	background: #1e1e2e; /* base */
 	border-radius: 5px;
 	border-style: solid;
-	border-width: 1px;
+	border-width: 5px;
 	border-color: rgba(205, 214, 244, 0.1); /* overlay0 (lágy kékes szürke) */
   }
   

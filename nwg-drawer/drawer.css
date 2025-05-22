@@ -1,5 +1,5 @@
 window {
-    background-color: rgba(30, 30, 46, 0.95); /* Mocha base */
+    background-color: rgba(30, 30, 46, 0.7); /* Mocha base */
     color: #cdd6f4; /* text */
 }
 
@@ -20,6 +20,7 @@ button:hover {
 /* in case you wanted to give category buttons a different look */
 #category-button {
     margin: 0 10px 0 10px;
+    font-size: larger;
 }
 
 #pinned-box {

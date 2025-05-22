@@ -3,26 +3,21 @@
   "position": "top",
   "modules-left": [
     "hyprland/workspaces",
-    "keyboard-state"
+    "keyboard-state",
+    "tray"
   ],
   "modules-center": [
-    "custom/notifications",
-    "custom/media"
+    "clock"
   ],
   "modules-right": [
     "pulseaudio",
     "bluetooth",
-    "clock"
+    "custom/notifications"
   ],
   "hyprland/workspaces": {
     "format": "{name}",
-    "on-click": "activate"
-  },
-  "custom/media": {
-    "exec": "playerctl -l | head -n1 | xargs -I{} sh -c 'playerctl -p {} metadata artist && playerctl -p {} metadata title && echo {}' | paste -sd '|' - | awk -F '|' '{ printf \"🎵 [%s] %s - %s\", $3, $1, $2 }' || echo '🎵 No media'",
-    "return-type": "text",
-    "interval": 5,
-    "tooltip": true
+    "on-click": "activate",
+    "all-outputs": true // Ez biztosítja, hogy minden workspace megjelenjen, ha több monitorod van
   },
   "custom/notifications": {
     "tooltip": false,
@@ -47,14 +42,24 @@
   "keyboard-state": {
     "numlock": true,
     "capslock": true,
-    "format": "{layout}",
-    "layout": {
+    "format": "{layout} {numlock} {capslock}",
+    "format-numlock": "NUM",
+    "format-capslock": "CAPS",
+    "format-on": "<span color='#c47f00'>{}</span>",
+    "format-off": "<span color='#555'>{}</span>",
+    "layout-map": {
+      "us": "EN",
       "hu": "HU",
-      "us": "US"
+      "jp": "JP"
     }
   },
   "clock": {
     "format": "{:%a %b %d  %I:%M:%S %p}",
     "tooltip-format": "{:%Y-%m-%d %H:%M:%S}"
+  },
+  "tray": {
+    "icon-size": 16,
+    "spacing": 6,
+    "show-passive-items": true
   }
 }

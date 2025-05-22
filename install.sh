@@ -1,10 +1,12 @@
 #!/bin/bash
 
-# Frissítjük a csomaglistát és telepítjük az alapvető csomagokat
-sudo dnf copr enable erikreider/SwayNotificationCenter
+# Engedélyezzük a külső repókat
+sudo dnf copr enable erikreider/SwayNotificationCenter -y
+
+# Rendszer frissítése
 sudo dnf update -y
 
-# Telepítjük a Hyprland-ot és fejlesztői csomagot, ha pluginokat akarunk építeni
+# Csomagok telepítése
 sudo dnf install -y \
   hyprland \
   hyprland-devel \
@@ -22,28 +24,37 @@ sudo dnf install -y \
   mako \
   pavucontrol \
   wofi \
+  vulkan-icd-loader \
+  vulkan-mesa-layers \
+  vulkan-intel \
+  vulkan-radeon \
+  cmake \
+  ags \
   xdg-desktop-portal-hyprland \
+  xdg-desktop-portal \
   hyprpolkitagent \
-  brave \
-  SwayNotificationCenter
+  brave-browser \
+  libappindicator-gtk3 \
+  SwayNotificationCenter \
+  fastfetch
 
-# Beállítjuk a GNOME színtémát sötét módra
+# GNOME színtéma beállítása sötét módra
 gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 
-echo "config fájlok másolása"
+echo "config fájlok másolása..."
 
-# rsync -av --delete /forrás/mappa/ /cél/mappa/
-rsync -av --delete ./cava ~/.config/
-rsync -av --delete ./hypr ~/.config/
-rsync -av --delete ./kitty ~/.config/
-rsync -av --delete ./nautilus ~/.config/
-rsync -av --delete ./nwg-displays ~/.config/
-rsync -av --delete ./nwg-dock-hyprland ~/.config/
-rsync -av --delete ./nwg-drawer ~/.config/
-rsync -av --delete ./swaync ~/.config/
-rsync -av --delete ./waybar ~/.config/
-rsync -av --delete ./wofi ~/.config/
+# Konfigurációs fájlok másolása
+cd
+rsync -av --delete ~/HYPRLAND/cava ~/.config/
+rsync -av --delete ~/HYPRLAND/hypr ~/.config/
+rsync -av --delete ~/HYPRLAND/kitty ~/.config/
+rsync -av --delete ~/HYPRLAND/nwg-displays ~/.config/
+rsync -av --delete ~/HYPRLAND/nwg-dock-hyprland ~/.config/
+rsync -av --delete ~/HYPRLAND/nwg-drawer ~/.config/
+rsync -av --delete ~/HYPRLAND/swaync ~/.config/
+rsync -av --delete ~/HYPRLAND/waybar ~/.config/
+rsync -av --delete ~/HYPRLAND/wofi ~/.config/
+rsync -av --delete ~/HYPRLAND/wofi ~/.config/
 
-
-# Informáljuk a felhasználót, hogy a telepítés befejeződött
+# Befejező üzenet
 echo "A telepítés sikeresen befejeződött. Kérlek indítsd újra a géped vagy a szükséges alkalmazásokat."
