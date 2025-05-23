@@ -18,25 +18,24 @@ sudo dnf install -y \
   nautilus \
   hypridle \
   hyprpaper \
-  Hyprshot \
+  hyprshot \
   playerctl \
-  bluez-utils \
+  bluez \
   mako \
   pavucontrol \
   wofi \
-  vulkan-icd-loader \
-  vulkan-mesa-layers \
-  vulkan-intel \
-  vulkan-radeon \
+  vulkan-loader \
+  mesa-vulkan-drivers \
   cmake \
-  ags \
   xdg-desktop-portal-hyprland \
   xdg-desktop-portal \
-  hyprpolkitagent \
-  brave-browser \
-  libappindicator-gtk3 \
-  SwayNotificationCenter \
-  fastfetch
+  fastfetch \
+  libappindicator-gtk3
+
+sudo dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
+sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
+sudo dnf install brave-browser
+
 
 # GNOME színtéma beállítása sötét módra
 gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
